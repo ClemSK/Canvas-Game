@@ -4,6 +4,8 @@
 
 https://clemsk.github.io/Canvas-Game/
 
+![alt text](game.png)
+
 ## Brief
 
 - Build a game using Vanilla Javascript
@@ -51,18 +53,17 @@ I'm pleased with where I ended up as my first project using JavaScript, HTML and
 I made mistakes, got in the weeds, better understood how to scope a project but mostly understood the fundamentals of
 the interactions between JavaScript, HTML and CSS. This project laid the foundations for moving on to more complex projects later on in the course and layer in frameworks like React.
 
-## Screenshots and wireframes
+<!-- ## Screenshots and wireframes -->
 
-## Highlights / Wins
+## Highlights
 
 I loved working with animations, understanding the process of drawing frames and creating something I loved.
-I leant about drawing images, how they appear, disappear and reappear in a new location to give teh illusion of movement
-defining movement with keys was stisfying
-learning about how a mouse functions with x and y axes and being able to trigger events based on the location of a click
+I learnt about drawing images, how they appear, disappear and reappear in a new location to give the illusion of movement.
+A discovery was also learning about the interaction between hardware and software such as how a mouse functions with x and y axes and being able to trigger events based on the location of a click or button press with arrow keys.
 
-## Struggles / Issues
+## Struggles
 
-It took me a while to understand the concepts I was applying before being able to have movement in the canvas.
+It took me a while to understand the concepts I was applying before being able to have movement in the canvas. Once over that hurdle I moved much more swiftly.
 I also had to scale back the original vision of the game as the feature set I wanted to develop would have taken more time than I had to implement.
 Ultimately, this was a critical lesson to learn and helped me with future projects to set an MVP and 'nice-to-haves', working on additional features as time allowed.
 styling the shapes was surprisingly hard and gave the characters a transparent center to better show the overlap between characters
@@ -70,12 +71,12 @@ implementing limits with shapes: defining what are the edges of the game for the
 
 ## What I would like to add to the project
 
-In game walls
-More points for larger enemies
-Recording 'Health' and having 'lives'
-Function for regenerating and 'Power-Ups'
-Two player mode where 2 players face-off
-Shield for not getting hit
+- In game walls
+- More points for larger enemies
+- Recording 'Health' and having 'lives'
+- Function for regenerating and 'Power-Ups'
+- Two player mode where 2 players face-off
+- Shield for not getting hit
 
 ## Would I recommend trying this?
 
