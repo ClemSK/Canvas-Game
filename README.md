@@ -44,7 +44,7 @@ In-game music
 ## Running the app
 
 On downloading the game there are no dependencies, the project only includes JavaScript, HTML and CSS.
-To run locally you will just need a working version of Node.js an Live Server (localhost:3000 or other port) in your code editor to play the game.
+To run locally you will just need a working version of Node.js and Live Server (localhost:3000 or other port) in your code editor to play the game.
 I used Live Server in VS Code before deploying.
 
 ## Where I ended up
