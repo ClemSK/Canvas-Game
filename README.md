@@ -44,7 +44,7 @@ In-game music
 ## Running the app
 
 On downloading the game there are no dependencies, the project only includes JavaScript, HTML and CSS.
-To run locally you can use the Live Server (localhost:3000 or other port) in your code editor.
+To run locally you will just need a working version of Node.js an Live Server (localhost:3000 or other port) in your code editor to play the game.
 I used Live Server in VS Code before deploying.
 
 ## Where I ended up
@@ -52,8 +52,6 @@ I used Live Server in VS Code before deploying.
 I'm pleased with where I ended up as my first project using JavaScript, HTML and CSS and version control.
 I made mistakes, got in the weeds, better understood how to scope a project but mostly understood the fundamentals of
 the interactions between JavaScript, HTML and CSS. This project laid the foundations for moving on to more complex projects later on in the course and layer in frameworks like React.
-
-<!-- ## Screenshots and wireframes -->
 
 ## Highlights
 
