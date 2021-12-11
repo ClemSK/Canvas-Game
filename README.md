@@ -28,13 +28,13 @@ JavaScript, HTML and CSS
 
 I had the option of choosing to either make grid or canvas based game, and selected canvas as it presented more of a challenge and gave me the opportunity to explore how animations work in this format.
 
-Before landing on my idea, I brainstormed different types of games that I wanted to make and settled on an online-game point and click shooting game with arrow-key movement.
+Before landing on my idea, I brainstormed different types of games that I wanted to make and settled on a point and click shooting game with arrow-key movement.
 
 Once decided I drew wireframes on a whiteboard and then in Evernote (I had not yet discovered Figma) and formed the basis of my design.
 
 ## Mvp
 
-Having enemies being drawn, and the ability to shoot them.
+Having the character and enemies being drawn, and the ability to shoot them.
 
 ## Bonus
 
@@ -57,17 +57,15 @@ the interactions between JavaScript, HTML and CSS. This project laid the foundat
 
 ## Highlights
 
-I loved working with animations, understanding the process of drawing frames and creating something I loved.
-I learnt about drawing images, how they appear, disappear and reappear in a new location to give the illusion of movement.
+I really enjoyed working with animations, understanding the process of drawing frames and creating something I loved.
 A discovery was also learning about the interaction between hardware and software such as how a mouse functions with x and y axes and being able to trigger events based on the location of a click or button press with arrow keys.
 
 ## Struggles
 
-It took me a while to understand the concepts I was applying before being able to have movement in the canvas. Once over that hurdle I moved much more swiftly.
-I also had to scale back the original vision of the game as the feature set I wanted to develop would have taken more time than I had to implement.
-Ultimately, this was a critical lesson to learn and helped me with future projects to set an MVP and 'nice-to-haves', working on additional features as time allowed.
-styling the shapes was surprisingly hard and gave the characters a transparent center to better show the overlap between characters
-implementing limits with shapes: defining what are the edges of the game for the character and enemies, something I struggled with for some time
+There was a steep learning curve before being able to code movement in the canvas. Once over that hurdle I moved much more swiftly.
+Collision detection: defining what are the edges of the game, character, enemies and projectiles was an interesting problem.
+I also had to scale back the original vision of the game as the intended feature set would have taken more time than I had to implement.
+Ultimately, this was a critical lesson to learn and helped me with project management for future projects: setting an MVP, 'nice-to-haves' and working on additional features as time allowed.
 
 ## What I would like to add to the project
 
@@ -80,4 +78,4 @@ implementing limits with shapes: defining what are the edges of the game for the
 
 ## Would I recommend trying this?
 
-Yes, working with canvas is great! As I mentioned above it was a lot of fun to learn about animations and the spectrum of applications available. I included a canvas element on my portfolio site clem-sk.com as a result of this project and also developed an interest in generative art. I'm currently experimenting with the p5.js library.
+Yes, working with canvas is great! As I mentioned above it was a lot of fun to learn about animations and the spectrum of applications available. I included a canvas element on my portfolio site https://clem-sk.com as a result of this project and also developed an interest in generative art. I'm currently experimenting with the p5.js library.

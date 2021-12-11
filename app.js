@@ -1,20 +1,21 @@
-const canvas = document.querySelector("canvas");
-const context = canvas.getContext("2d");
-const scoreElement = document.querySelector("#scoreElement");
-const startGameButton = document.querySelector("#startGameButton");
-const modalElement = document.querySelector("#modalElement");
-const endScoreElement = document.querySelector("#endScoreElement");
-const clockElement = document.querySelector("#clock");
-const modalClock = document.querySelector("#modalClock");
+const canvas = document.querySelector('canvas');
+const context = canvas.getContext('2d');
+const scoreElement = document.querySelector('#scoreElement');
+const startGameButton = document.querySelector('#startGameButton');
+const modalElement = document.querySelector('#modalElement');
+const endScoreElement = document.querySelector('#endScoreElement');
+const clockElement = document.querySelector('#clock');
+const modalClock = document.querySelector('#modalClock');
 // const gameSounds = document.querySelectorAll("#player > div");
 
 canvas.width = innerWidth / 2; // this takes up the whole page horizontally
-canvas.height = innerHeight / 2; // this takes up the whole page verticallly
+canvas.height = innerHeight / 2; // this takes up the whole page vertically
 
 // I created a player class for when I thought I might have more than 1 player and that shooting was going to be done with buttons
-// still useful as I used what I learnt in class and will make it easier to expand the game if I wanted to. 
+// still useful as I used what I learnt in class and will make it easier to expand the game if I wanted to.
 class Player {
-  constructor(x, y, radius, color, borderColor, lineThickness) { // border and lineThickness are there to add definition to the player
+  constructor(x, y, radius, color, borderColor, lineThickness) {
+    // border and lineThickness are there to add definition to the player
     this.x = x;
     this.y = y;
     this.radius = radius;
@@ -30,7 +31,7 @@ class Player {
     context.strokeStyle = this.borderColor; // this is the color of the border
     context.lineWidth = this.lineThickness; // this is the thickness of the line - think of css
     context.fill(); // call function to fill circle
-    context.stroke();// call function to draw the edge
+    context.stroke(); // call function to draw the edge
   }
 
   // defining the movements and limits of the player to not go beyond the canvas edge, found this tricky.
@@ -60,12 +61,7 @@ class Player {
   }
 }
 // starting player position, resets here.
-let newPlayer1 = new Player(
-  canvas.width / 2,
-  canvas.height / 2,
-  10,
-  "white"
-);
+let newPlayer1 = new Player(canvas.width / 2, canvas.height / 2, 10, 'white');
 // for creating multiple projectiles, definitely need to create a class for this as there will be many instances of a projectile
 // which will be fired.
 class Projectile {
@@ -84,7 +80,8 @@ class Projectile {
     context.fill();
     // notice the lack of border, I'm making the distinction
   }
-  update() { // here we are updating the position of the projectile to make it move, assigning direction and speed. 
+  update() {
+    // here we are updating the position of the projectile to make it move, assigning direction and speed.
     this.draw();
     this.x = this.x + this.velocity.x;
     this.y = this.y + this.velocity.y;
@@ -93,8 +90,8 @@ class Projectile {
 
 class Enemy {
   // like with the player we are adding a border and line thickness, in addition to velocity
-  // velocity is needed to move the enemies as they are not directed by the player or an oponent
-  // the enemy class is constructed with aspects of the player class for appearance, but wiht the projectile update function
+  // velocity is needed to move the enemies as they are not directed by the player or an opponent
+  // the enemy class is constructed with aspects of the player class for appearance, but with the projectile update function
   // for automated movement
   constructor(x, y, radius, color, velocity, borderColor, lineThickness) {
     this.x = x;
@@ -114,7 +111,7 @@ class Enemy {
     context.fill();
     context.stroke();
   }
-  update() { 
+  update() {
     this.draw();
     this.x = this.x + this.velocity.x;
     this.y = this.y + this.velocity.y;
@@ -130,11 +127,11 @@ let score = 0;
 function animate() {
   animationID = requestAnimationFrame(animate); // here animationID requests a frame, calls animate and creates a loop to change frames
   context.clearRect(0, 0, canvas.width, canvas.height); // essential part of canvas: clearing each frame to draw the next one with updated movement
-  newPlayer1.draw();// calling the player function to respond to player actions
+  newPlayer1.draw(); // calling the player function to respond to player actions
 
-  // for each projectile added to the projectiles array, calling the update function in the projectile class, 
+  // for each projectile added to the projectiles array, calling the update function in the projectile class,
   // where we add velocity and update the position of the projectile
-  projectiles.forEach((projectile) => { 
+  projectiles.forEach((projectile) => {
     projectile.update();
   });
 
@@ -147,17 +144,16 @@ function animate() {
 
     // when the enemy touches the plyer => game over function
     if (distance - enemy.radius - newPlayer1.radius < 1) {
-      console.log("end game");
+      console.log('end game');
       cancelAnimationFrame(animationID);
-      modalElement.style.display = "flex";
+      modalElement.style.display = 'flex';
       endScoreElement.innerHTML = score;
       modalClock.innerHTML = clockElement.textContent;
       clearInterval(startTimer);
       stopStopwatch(); // records the time at which you lost
       losingSound.play(); // plays a 'womp womp' sound
-      gameMusic.pause(); // minor bug where the music does not reset when starting a new game. Also it's possible to use the play/pause button on the 
+      gameMusic.pause(); // minor bug where the music does not reset when starting a new game. Also it's possible to use the play/pause button on the
       // keyboard will start and stop the music once a 1st round of the game has been played, regardless of whether you're playing or not
-      
     }
 
     // projectile touches enemy - defining the distance between a projectile and an enemy
@@ -167,14 +163,14 @@ function animate() {
         projectile.y - enemy.y
       ); // distance between two points
 
-      // objects touch - if the distance between an enemy radius and a projectile is less than 1, it has touched 
+      // objects touch - if the distance between an enemy radius and a projectile is less than 1, it has touched
       if (distance - enemy.radius - projectile.radius < 1) {
-        console.log("remove from screen");// and remove it from the screen
+        console.log('remove from screen'); // and remove it from the screen
         enemies.splice(index, 1); // by removing it from the enemies array
         projectiles.splice(projectileIndex, 1); // and also removing the projectile from the projectiles array
 
         // increase score each time this happens
-        score += 100; 
+        score += 100;
         console.log(score);
         scoreElement.innerHTML = score; // update the score on the screen
       }
@@ -186,7 +182,7 @@ const projectile = new Projectile( // creating a new projectile
   canvas.width / 2,
   canvas.height / 2,
   10,
-  "white",
+  'white',
   {
     x: -1,
     y: -1,
@@ -196,13 +192,14 @@ const projectile = new Projectile( // creating a new projectile
 let projectiles = []; // where we store projectiles
 let enemies = []; // where we store enemies
 
-function init() { // function to start the game
-  newPlayer1 = new Player( 
+function init() {
+  // function to start the game
+  newPlayer1 = new Player(
     canvas.width / 2,
     canvas.height / 2,
     10,
-    "rgba(255, 255, 255, 0.6)", // player fillstyle - inner area color
-    "white", // player strokestyle - boder color
+    'rgba(255, 255, 255, 0.6)', // player fillstyle - inner area color
+    'white', // player strokestyle - border color
     3 // linethickness in px
   );
   projectiles = []; // starting position of enemies, projectiles and score
@@ -210,16 +207,16 @@ function init() { // function to start the game
   score = 0;
   scoreElement.innerHTML = score;
   endScoreElement.innerHTML = score;
-  modalElement.style.display = "none"; // here setting the modal score and time to zero when we reset the game
-  modalClock.innerHTML = "none";
+  modalElement.style.display = 'none'; // here setting the modal score and time to zero when we reset the game
+  modalClock.innerHTML = 'none';
   startStopwatch();
   gameMusic.play();
 }
 
-let startTimer = 0; // confusingly this is not to do wiht the clock stopwatch, 
+let startTimer = 0; // confusingly this is not to do with the clock stopwatch,
 // but the interval at which enemies enter the screen it's put here as it relates to the section just after enemies
 
-let startingInterval = 1000; // set the initial interval at whihc enenmies appear,
+let startingInterval = 1000; // set the initial interval at which enemies appear,
 // important for increasing the interval at which teh enemies get created later
 
 function spawnEnemies(interval) {
@@ -236,12 +233,11 @@ function spawnEnemies(interval) {
       x = Math.random() * canvas.width;
       y = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
     }
-    const color = "rgba(0, 126, 0, 0.6)";
+    const color = 'rgba(0, 126, 0, 0.6)';
     const lineThickness = 3;
-    const borderColor = "green"
-    
+    const borderColor = 'green';
 
-    // detemine direction of click
+    // determine direction of click
     const enemiesAngle = Math.atan2(canvas.height - y, canvas.width - x);
     console.log(enemiesAngle); // show where is being clicked
     const velocity = {
@@ -249,17 +245,19 @@ function spawnEnemies(interval) {
       x: Math.cos(enemiesAngle) * 8,
       y: Math.sin(enemiesAngle) * 8,
     };
-    enemies.push(new Enemy(x, y, radius, color, velocity, lineThickness, borderColor));
+    enemies.push(
+      new Enemy(x, y, radius, color, velocity, lineThickness, borderColor)
+    );
     console.log(enemies);
 
     generateMoreEnemies();
-  }, interval); // setting the 
+  }, interval); // setting the
 }
 
-// as score increases, decrease the time at which the enemeies spawn
+// as score increases, decrease the time at which the enemies spawn
 function generateMoreEnemies() {
   if (score === 500) {
-    console.log("score");
+    console.log('score');
     clearInterval(startTimer);
     spawnEnemies(1500);
   } else if (score === 1000) {
@@ -287,7 +285,7 @@ function generateMoreEnemies() {
 }
 
 // function for clicking and sending a projectile
-canvas.addEventListener("click", (event) => {
+canvas.addEventListener('click', (event) => {
   console.log(event);
   const angle = Math.atan2(
     event.clientY - canvas.height,
@@ -300,21 +298,21 @@ canvas.addEventListener("click", (event) => {
   };
   // from original position (in the middle of the screen) move a projectile with velocity
   projectiles.push(
-    new Projectile(newPlayer1.x, newPlayer1.y, 5, "white", velocity) // this is where the color and size of the projectile is defined
-    // above there may be a possibility to define it, but it's last registered here. 
+    new Projectile(newPlayer1.x, newPlayer1.y, 5, 'white', velocity) // this is where the color and size of the projectile is defined
+    // above there may be a possibility to define it, but it's last registered here.
   );
 });
 
 // setting game music
-const gameMusic = new Audio("581362__bloodpixelhero__unreal-reality.wav");
-const shootingSound = new Audio("146725__leszek-szary__laser.wav");
-const losingSound = new Audio("350988__cabled-mess__lose-c-04.wav");
-canvas.addEventListener("click", () => {
+const gameMusic = new Audio('581362__bloodpixelhero__unreal-reality.wav');
+const shootingSound = new Audio('146725__leszek-szary__laser.wav');
+const losingSound = new Audio('350988__cabled-mess__lose-c-04.wav');
+canvas.addEventListener('click', () => {
   shootingSound.play();
 });
 
 // initiating the game from click
-startGameButton.addEventListener("click", () => {
+startGameButton.addEventListener('click', () => {
   init();
   animate();
   spawnEnemies(startingInterval);
@@ -332,7 +330,7 @@ function startStopwatch() {
     clockInterval = setInterval(updateDisplay, 10);
   }
 }
-// stopping the timer when the playe loses
+// stopping the timer when the player loses
 function stopStopwatch() {
   clearInterval(clockInterval);
   clockInterval = null;
@@ -341,18 +339,18 @@ function stopStopwatch() {
 // updating the stopwatch time
 function updateDisplay() {
   const elapsedTime = new Date(Date.now() - stopwatchStartTime);
-  const minutes = elapsedTime.getMinutes().toString().padStart(2, "0");
-  const seconds = elapsedTime.getSeconds().toString().padStart(2, "0");
+  const minutes = elapsedTime.getMinutes().toString().padStart(2, '0');
+  const seconds = elapsedTime.getSeconds().toString().padStart(2, '0');
   const milliseconds = elapsedTime
     .getMilliseconds()
     .toString()
-    .padStart(3, "0");
+    .padStart(3, '0');
 
   clockElement.textContent = `${minutes}:${seconds}.${milliseconds}`; // where the timer updates the text elements for the player on screen
 }
 
 // movement keys for player 1
-window.addEventListener("keydown", handleKeyDown);
+window.addEventListener('keydown', handleKeyDown);
 function handleKeyDown(event) {
   switch (
     event.keyCode // position of letters might change when on different layouts - same in every language
@@ -374,7 +372,7 @@ function handleKeyDown(event) {
       break;
 
     default:
-      console.log("you cannot move player 1 like that");
+      console.log('you cannot move player 1 like that');
   }
   console.log(event);
 }
